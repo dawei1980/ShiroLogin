@@ -8,6 +8,7 @@ import com.shiro.login.result.JsonObjectResult;
 import com.shiro.login.result.ResultCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,18 +19,29 @@ public class PermissionController {
     @Autowired
     UPermissionDao uPermissionDao;
 
+    /**
+     * 权限列表包含分页
+     * */
     @GetMapping(value = "/permissionPageList")
     public Object findByPaging(Integer pageNum, Integer pageSize){
         PageHelper.startPage(pageNum,pageSize);
         Page<UPermission> data = uPermissionDao.findByPaging();
-//        JSONObject result = new JSONObject();
-//        result.put("employees",data);
-//        //获取页面总数
-//        result.put("pages",data.getPages());
-//        //获取数据总数
-//        result.put("total",data.getTotal());
-//        return ResultMsg.getMsg(result);
         return new JsonObjectResult(ResultCode.SUCCESS, "更新数据成功", data);
+    }
+
+    @PostMapping(value = "/addPermission")
+    public Object addPermission(UPermission uPermission){
+        UPermission checkedPermission = uPermissionDao.findById(uPermission.getId());
+
+        if(null != checkedPermission){
+            return new JsonObjectResult(ResultCode.HAVE_PERMISSION, "权限名已存在", checkedPermission.getName());
+        }
+        if(null != checkedPermission){
+            return new JsonObjectResult(ResultCode.HAVE_PERMISSION, "权限名已存在", checkedPermission.getUrl());
+        }
+
+        uPermissionDao.addPermission(uPermission);
+        return new JsonObjectResult(ResultCode.SUCCESS, "权限添加成功");
     }
 
 }

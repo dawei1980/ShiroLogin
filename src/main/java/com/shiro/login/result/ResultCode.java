@@ -43,6 +43,8 @@ public enum ResultCode {
     /**没有数据*/
     NO_DATA("410","没有数据"),
 
+    /**用户名已存在*/
+    HAVE_PERMISSION("411","权限名已存在"),
 
     /** 未知的错误 */
     UNKNOWN_ERROR("499", "未知错误");

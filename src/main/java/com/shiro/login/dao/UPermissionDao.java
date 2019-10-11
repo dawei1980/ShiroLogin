@@ -14,6 +14,13 @@ public interface UPermissionDao extends BaseDao<UPermission, Long> {
     */
     List<UPermission> findPermissionByUid(Long id);
 
+    UPermission findById(Long id);
+
     Page<UPermission> findByPaging();
 
+    int addPermission(UPermission uPermission);
+
+    int deletePermission(Long id);
+
+    int updatePermission(UPermission uPermission);
 }
