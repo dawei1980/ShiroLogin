@@ -44,4 +44,15 @@ public class PermissionController {
         return new JsonObjectResult(ResultCode.SUCCESS, "权限添加成功");
     }
 
+    @PostMapping(value = "/deletePermission")
+    public Object deletePermission(Long id){
+        uPermissionDao.deletePermission(id);
+        return new JsonObjectResult(ResultCode.SUCCESS, "删除权限成功");
+    }
+
+    @PostMapping(value = "/updatePermission")
+    public Object updatePermission(UPermission uPermission){
+        uPermissionDao.updatePermission(uPermission);
+        return new JsonObjectResult(ResultCode.SUCCESS, "更新权限成功");
+    }
 }

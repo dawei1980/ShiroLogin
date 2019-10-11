@@ -77,6 +77,8 @@ public class ShiroConfiguration {
         filterChainDefinitionManager.put("/ajaxLogin", "anon");
         filterChainDefinitionManager.put("/shiro/permissionPageList", "anon");
         filterChainDefinitionManager.put("/shiro/addPermission", "anon");
+        filterChainDefinitionManager.put("/shiro/deletePermission", "anon");
+        filterChainDefinitionManager.put("/shiro/updatePermission", "anon");
         filterChainDefinitionManager.put("/statistic/**",  "anon");
         filterChainDefinitionManager.put("/**",  "authc,roles[user]");//其他资源全部拦截
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionManager);

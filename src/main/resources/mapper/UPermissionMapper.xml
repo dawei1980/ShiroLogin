@@ -151,18 +151,13 @@
 
     </select>
 
-
     <!-- 获取用户权限-->
     <select id="findPermissionByUid" resultMap="UPermission">
         SELECT p.* from u_user_role urole left join  u_role_permission rp   on urole.rid=rp.rid  left join  u_permission p on p.id = rp.pid  where urole.uid = #{0}
     </select>
 
-    <!--===================================================================================================-->
     <select id="findByPaging" resultMap="UPermission" parameterType="com.shiro.login.entity.Query">
         select * from u_permission
     </select>
-
-
-    <!--===================================================================================================-->
 
 </mapper>
