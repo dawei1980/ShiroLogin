@@ -18,58 +18,58 @@ public interface BaseDao<T,PK extends Serializable> {
 	 * 增加对象
 	 * @param obj
 	 */
-	public void add(T obj);
+	void add(T obj);
 
 	/**
 	 * 修改对象
 	 * @param obj
 	 */
-	public int update(T obj);
+	int update(T obj);
 
 	/**
 	 * 根据主键删除对象
 	 * @param pk
 	 */
-	public int delete(PK pk);
+	int delete(PK pk);
 	/**
 	 * 根据列名条件删除对象
 	 * @param pk
 	 */
-	public int deleteByCommonWhere(Query q);
+	int deleteByCommonWhere(Query q);
 
 	/**
 	 * 根据主键得到某个对象
 	 * @param pk
 	 */
-	public T get(PK pk);
+	T get(PK pk);
 
 	/**
 	 * 根据一组主键（数组），得到多个对象，以列表形式返回
 	 * @param pks
 	 * @return
 	 */
-	public List<T> getByIds(PK[] pks);
+	List<T> getByIds(PK[] pks);
 
 	/**
 	 * 根据条件查询数据条件
 	 * @param q
 	 * @return
 	 */
-	public Long count(Query q);
+	Long count(Query q);
 
 	/**
 	 * 根据条件查询数据
 	 * @param q
 	 * @return
 	 */
-	public List<T> queryAll(Query q);
+	List<T> queryAll(Query q);
 
 	/**
 	 * 根据条件查询分页数据
 	 * @param q
 	 * @return
 	 */
-	public List<T> pageList(Query q);
+	List<T> pageList(Query q);
 	/**
 	 * 只查询需要的列名的list
 	 *
