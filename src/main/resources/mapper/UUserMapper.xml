@@ -210,7 +210,6 @@
 		<where>
 			<include refid="listCommonWhere" />
 		</where>
-
 	</select>
 
 	<!--根据主键获取数据-->
@@ -218,5 +217,10 @@
 		SELECT * FROM u_user uuser
 		LEFT JOIN u_role urole ON uuser.id = urole.id
 		LEFT JOIN u_permission upermission ON urole.id = upermission.id WHERE uuser.nickname = #{0}
+	</select>
+
+	<!--获取所有用户信息-->
+	<select id="findAllUserByPage" resultMap="UUser">
+		SELECT * FROM u_user
 	</select>
 </mapper>

@@ -13,4 +13,6 @@ public interface UUserRoleDao extends BaseDao<UUserRole, Long> {
     * @param obj
     */
    //public void add(SysMessageTep	 obj);
+
+
 }

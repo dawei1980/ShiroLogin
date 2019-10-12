@@ -26,7 +26,11 @@ public class PermissionController {
     public Object findByPaging(Integer pageNum, Integer pageSize){
         PageHelper.startPage(pageNum,pageSize);
         Page<UPermission> data = uPermissionDao.findByPaging();
-        return new JsonObjectResult(ResultCode.SUCCESS, "更新数据成功", data);
+        if(data.size() != 0){
+            return new JsonObjectResult(ResultCode.SUCCESS, "更新数据成功", data);
+        }else {
+            return new JsonObjectResult(ResultCode.NO_DATA, "没有数据", data);
+        }
     }
 
     @PostMapping(value = "/addPermission")
