@@ -14,5 +14,13 @@ public interface UUserDao extends BaseDao<UUser, Long> {
 	 */
 	UUser findByName(String name);
 
+	UUser findById(Long id);
+
 	Page<UUser> findAllUserByPage();
+
+	int addUser(UUser uUser);
+
+	int updateUser(UUser uUser);
+
+	int deleteUser(Long id);
  }

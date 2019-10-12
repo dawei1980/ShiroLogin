@@ -72,7 +72,7 @@
 
 
 	<!-- 添加数据,默认列名第一个为主键 useGeneratedKeys="true" keyProperty="activityId"-->
-	<insert id="add" parameterType="com.shiro.login.entity.UUser"  useGeneratedKeys="true" keyProperty="id">
+	<insert id="addUser" parameterType="com.shiro.login.entity.UUser"  useGeneratedKeys="true" keyProperty="id">
 		insert into u_user (
 			<if test="id!=null ">
 			id,

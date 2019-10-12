@@ -29,7 +29,7 @@ public class PermissionController {
         if(data.size() != 0){
             return new JsonObjectResult(ResultCode.SUCCESS, "更新数据成功", data);
         }else {
-            return new JsonObjectResult(ResultCode.NO_DATA, "没有数据", data);
+            return new JsonObjectResult(ResultCode.NO_DATA, "没有数据");
         }
     }
 
