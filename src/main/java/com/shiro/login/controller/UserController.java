@@ -9,10 +9,7 @@ import com.shiro.login.entity.UUser;
 import com.shiro.login.result.JsonObjectResult;
 import com.shiro.login.result.ResultCode;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/shiro")
@@ -37,16 +34,18 @@ public class UserController {
     }
 
     @PostMapping(value = "/addUser")
-    public Object addUser(UUser uUser,String roleType){
+    public Object addUser(UUser uUser,
+                          @RequestParam(value = "role_type") String roleType){
         UUser checkedUser = uUserDao.findById(uUser.getId());
 
         if(null != checkedUser){
             return new JsonObjectResult(ResultCode.HAVE_PERMISSION, "用户名已存在", checkedUser.getNickname());
         }
 
-        long type = Long.valueOf(roleType);
+        long roleId = Long.valueOf(roleType);
 
         uUserDao.addUser(uUser);
+        uUserRoleDao.add(roleId);
         return new JsonObjectResult(ResultCode.SUCCESS, "用户名添加成功");
     }
 
