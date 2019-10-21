@@ -49,4 +49,25 @@ public class UserController {
         return new JsonObjectResult(ResultCode.SUCCESS, "用户名添加成功");
     }
 
+    @PostMapping(value = "/deleteUser")
+    public Object deleteUser(@RequestParam(value = "user_id") long userId){
+        uUserDao.deleteUser(userId);
+        return new JsonObjectResult(ResultCode.SUCCESS, "删除成功");
+    }
+
+    @PostMapping(value = "/updateUser")
+    public Object updateUser(UUser uUser){
+        uUserDao.updateUser(uUser);
+        return new JsonObjectResult(ResultCode.SUCCESS, "更新成功");
+    }
+
+    @PostMapping(value = "/deleteUserAndRole")
+    public Object deleteUserAndRole(@RequestParam(value = "user_id") long userId){
+        if(userId != 0){
+            uUserDao.deleteUser(userId);
+            return new JsonObjectResult(ResultCode.SUCCESS, "删除成功");
+        }else {
+            return new JsonObjectResult(ResultCode.PARAMS_ERROR, "参数错误");
+        }
+    }
 }

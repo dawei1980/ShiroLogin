@@ -23,4 +23,6 @@ public interface UUserDao extends BaseDao<UUser, Long> {
 	int updateUser(UUser uUser);
 
 	int deleteUser(Long id);
+
+	int deleteUserAndRole(Long id);
  }
