@@ -264,6 +264,6 @@
 	</update>
 
 	<delete  id="deleteUserAndRole">
-		DELETE t1,t2 FROM u_user t1 INNER JOIN u_role t2 ON t1.id = t2.id WHERE t1.id = #{id}
+		DELETE t1,t2 FROM u_user t1 LEFT JOIN u_role t2 ON t1.id = t2.id WHERE t1.id = #{id}
 	</delete>
 </mapper>
