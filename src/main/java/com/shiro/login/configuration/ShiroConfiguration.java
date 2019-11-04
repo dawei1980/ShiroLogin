@@ -81,6 +81,10 @@ public class ShiroConfiguration {
         filterChainDefinitionManager.put("/shiro/updatePermission", "anon");
         filterChainDefinitionManager.put("/shiro/userPageList", "anon");
         filterChainDefinitionManager.put("/shiro/deleteUserAndRole", "anon");
+        filterChainDefinitionManager.put("/shiro/rolePageList", "anon");
+        filterChainDefinitionManager.put("/shiro/addRole", "anon");
+        filterChainDefinitionManager.put("/shiro/deleteRole", "anon");
+        filterChainDefinitionManager.put("/shiro/updateRole", "anon");
         filterChainDefinitionManager.put("/statistic/**",  "anon");
         filterChainDefinitionManager.put("/**",  "authc,roles[user]");//其他资源全部拦截
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionManager);

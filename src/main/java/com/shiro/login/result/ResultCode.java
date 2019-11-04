@@ -46,6 +46,10 @@ public enum ResultCode {
     /**用户名已存在*/
     HAVE_PERMISSION("411","权限名已存在"),
 
+    PAGE_NUM_NOT_EMPTY("412","页数不能为空"),
+
+    PAGE_SIZE_NOT_EMPTY("413","行数不能为空"),
+
     /** 未知的错误 */
     UNKNOWN_ERROR("499", "未知错误");
 

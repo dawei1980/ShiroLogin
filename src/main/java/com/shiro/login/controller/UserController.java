@@ -24,12 +24,19 @@ public class UserController {
      * */
     @GetMapping(value = "/userPageList")
     public Object findByPaging(Integer pageNum, Integer pageSize){
-        PageHelper.startPage(pageNum,pageSize);
-        Page<UUser> data = uUserDao.findAllUserByPage();
-        if(data.size() != 0){
-            return new JsonObjectResult(ResultCode.SUCCESS, "获取数据成功", data);
-        }else {
-            return new JsonObjectResult(ResultCode.NO_DATA, "没有数据");
+
+        if(pageNum == 0){
+            return new JsonObjectResult(ResultCode.PAGE_NUM_NOT_EMPTY, "页数不能为空");
+        }else if(pageSize == 0){
+            return new JsonObjectResult(ResultCode.PAGE_SIZE_NOT_EMPTY, "行数不能为空");
+        }else{
+            PageHelper.startPage(pageNum,pageSize);
+            Page<UUser> data = uUserDao.findAllUserByPage();
+            if(data.size() != 0){
+                return new JsonObjectResult(ResultCode.SUCCESS, "获取数据成功", data);
+            }else {
+                return new JsonObjectResult(ResultCode.NO_DATA, "没有数据");
+            }
         }
     }
 
